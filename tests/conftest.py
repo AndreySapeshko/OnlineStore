@@ -15,4 +15,13 @@ def product():
     )
 
 
-
+@pytest.fixture
+def category():
+    return Category(
+        name= 'Смартфоны',
+        description= 'Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни',
+        products= [
+            Product('Iphone 15', '512GB, Gray space', 210000.0, 8),
+            Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
+        ]
+    )
