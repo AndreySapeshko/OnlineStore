@@ -4,6 +4,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from tests.config import PATH_PRODUCTS
 
 
 @pytest.fixture
@@ -32,7 +33,7 @@ def category() -> Category:
 @pytest.fixture
 def categories_json_file() -> tuple:
     categories = []
-    file_name = 'C:/Users/user/PyCharmStudyProject/OnlineStore/data/products.json'
+    file_name = PATH_PRODUCTS
     with open(file_name, 'r', encoding='utf-8') as file:
         categories = json.load(file)
     return categories, file_name
