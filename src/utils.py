@@ -1,9 +1,9 @@
 import json
 import os
 
-
-from src.product import Product
 from src.category import Category
+from src.product import Product
+
 
 def read_from_json(file_name: str) -> list[dict]:
     data = []
@@ -12,21 +12,17 @@ def read_from_json(file_name: str) -> list[dict]:
             data = json.load(file)
     return data
 
+
 def created_category_with_products(file_name: str) -> list[Category]:
     data = read_from_json(file_name)
     categories = []
     if len(data) != 0:
         for category in data:
             products = [Product(
-                    x.get('name'),
-                    x.get('description'),
-                    x.get('price'),
-                    x.get('quantity')
-                ) for x in category.get('products') if category.get('products')]
-            categories.append(Category(category.get('name'), category.get('description'), products= products))
+                x.get('name'),
+                x.get('description'),
+                x.get('price'),
+                x.get('quantity')
+            ) for x in category.get('products') if category.get('products')]
+            categories.append(Category(category.get('name'), category.get('description'), products=products))
     return categories
-
-
-# categories = created_category_with_products('../data/products.json')
-# for category in categories:
-#     print(f'name: {category.name}, description: {category.description}, products: {len(category.products)}')

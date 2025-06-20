@@ -1,9 +1,7 @@
-from src.category import Category
-from src.product import Product
-from src.utils import read_from_json, created_category_with_products
+from src.utils import created_category_with_products, read_from_json
 
 
-def test_read_from_json(categories_json_file) -> None:
+def test_read_from_json(categories_json_file: list) -> None:
     expected_list = categories_json_file[0]
     file_name = categories_json_file[1]
     data_from_json = read_from_json(file_name)
@@ -14,7 +12,7 @@ def test_read_from_json(categories_json_file) -> None:
         assert len(data_from_json[i].get('products')) == len(expected_list[i].get('products'))
 
 
-def test_created_category_with_product(categories_json_file):
+def test_created_category_with_product(categories_json_file: list) -> None:
     expected_list = categories_json_file[0]
     file_name = categories_json_file[1]
     categories_from_json = created_category_with_products(file_name)

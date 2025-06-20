@@ -1,9 +1,10 @@
-from src.product import Product
+from src.category import Category
 
 
-def test_category(category):
+def test_category(category: Category) -> None:
     assert category.name == 'Смартфоны'
-    assert category.description == 'Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни'
+    assert category.description == ('Смартфоны, как средство не только коммуникации, '
+                                    'но и получения дополнительных функций для удобства жизни')
     assert len(category.products) == 2
     assert category.category_count == 1
     assert category.product_count == 2
