@@ -32,7 +32,6 @@ def category() -> Category:
 
 @pytest.fixture
 def categories_json_file() -> tuple:
-    categories = []
     file_name = PATH_PRODUCTS
     with open(file_name, 'r', encoding='utf-8') as file:
         categories = json.load(file)
