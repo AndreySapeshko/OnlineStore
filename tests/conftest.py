@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 
@@ -25,3 +27,12 @@ def category():
             Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
         ]
     )
+
+
+@pytest.fixture
+def categories_json_file():
+    categories = []
+    file_name = '../data/products.json'
+    with open(file_name, 'r', encoding='utf-8') as file:
+        categories = json.load(file)
+    return categories, file_name

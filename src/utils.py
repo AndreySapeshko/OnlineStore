@@ -17,14 +17,12 @@ def created_category_with_products(file_name: str) -> list[Category]:
     categories = []
     if len(data) != 0:
         for category in data:
-            products = []
-            if category.get('products'):
-                products = [Product(
+            products = [Product(
                     x.get('name'),
                     x.get('description'),
                     x.get('price'),
                     x.get('quantity')
-                ) for x in category.get('products')]
+                ) for x in category.get('products') if category.get('products')]
             categories.append(Category(category.get('name'), category.get('description'), products= products))
     return categories
 
