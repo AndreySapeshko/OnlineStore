@@ -1,6 +1,7 @@
 import pytest
 
 from src.product import Product
+from src.category import Category
 
 
 def test_product(product: Product) -> None:
@@ -10,12 +11,18 @@ def test_product(product: Product) -> None:
     assert product.quantity == 5
 
 
-def test_new_product() -> None:
-    product = Product.new_product(['Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14])
-    assert product.name == 'Xiaomi Redmi Note 11'
-    assert product.description == '1024GB, Синий'
-    assert product.price == 31000.0
-    assert product.quantity == 14
+def test_check_product_matching(product: Product, category: Category) -> None:
+    number_of_pieces = sum([x.quantity for x in category.products])
+    number_products = len(category.products)
+    Product.check_product_matching(product, category.products)
+    assert sum([x.quantity for x in category.products]) == number_of_pieces + product.quantity
+    assert len(category.products) == number_products + 1
+
+
+def test_new_product(category) -> None:
+    number_of_pieces = sum([x.quantity for x in category.products])
+    Product.new_product(['Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14], category.products)
+    assert sum([x.quantity for x in category.products]) == number_of_pieces + 14
 
 
 def test_new_product_except() -> None:
