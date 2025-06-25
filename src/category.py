@@ -35,6 +35,3 @@ categ = Category(
             Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
         ]
     )
-
-categ.add_product(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
-categ.products
