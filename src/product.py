@@ -4,14 +4,32 @@ from itertools import product
 class Product:
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+
+    @property
+    def price(self) -> float:
+        return self.__price
+
+
+    @price.setter
+    def price(self, new_price: float) -> None:
+        if new_price > 0:
+            if self.__price > new_price:
+                answer = input('Подтверждаете понижение цены? Да введите "Y", нет введите "N" ')
+                if answer.lower() != 'y':
+                    return
+            self.__price = new_price
+        else:
+            print('Цена не должна быть нулевая или отрицательная')
+
 
     @staticmethod
     def check_product_matching(product, products: list) -> bool:
