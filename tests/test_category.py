@@ -1,3 +1,5 @@
+from pytest import CaptureFixture
+
 from src.category import Category
 from src.product import Product
 
@@ -16,7 +18,7 @@ def test_category_add_product(category: Category) -> None:
     assert len(category.products) == 3
 
 
-def test_category_products(category: Category, capsys) -> None:
+def test_category_products(category: Category, capsys: CaptureFixture[str]) -> None:
     category.products
     captured = capsys.readouterr()
     assert captured.out == ('Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'

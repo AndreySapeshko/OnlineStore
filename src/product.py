@@ -1,4 +1,4 @@
-from itertools import product
+from __future__ import annotations
 
 
 class Product:
@@ -13,11 +13,9 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @property
     def price(self) -> float:
         return self.__price
-
 
     @price.setter
     def price(self, new_price: float) -> None:
@@ -30,9 +28,8 @@ class Product:
         else:
             print('Цена не должна быть нулевая или отрицательная')
 
-
     @staticmethod
-    def check_product_matching(product, products: list) -> bool:
+    def check_product_matching(product: Product, products: list) -> None:
         for p in products:
             if p.name == product.name and p.description == product.description:
                 if p.price < product.price:
@@ -42,16 +39,15 @@ class Product:
         products.append(product)
         return
 
-
     @classmethod
-    def new_product(cls, params: list, products: list) -> None:
+    def new_product(cls, params: dict, products: list) -> Product:
         try:
-            name = params[0]
-            description = params[1]
-            price = params[2]
-            quantity = params[3]
+            name = params['name']
+            description = params['description']
+            price = params['price']
+            quantity = params['quantity']
         except Exception('Количество или тип параметров не соответстует ожиданию') as e:
             print(f'Ошибка: {e}')
-        product = Product(name, description, price, quantity)
-        Product.check_product_matching(product, products)
-        return
+        product_new = Product(name, description, price, quantity)
+        Product.check_product_matching(product_new, products)
+        return product_new
