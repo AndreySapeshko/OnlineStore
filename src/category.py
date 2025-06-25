@@ -16,12 +16,25 @@ class Category:
         Category.product_count += len(self._products)
 
 
-    def add_product(self, product: Product):
+    def add_product(self, product: Product) -> None:
         self._products.append(product)
 
 
     @property
-    def products(self):
+    def products(self) -> list[Product]:
         for product in self._products:
             print(f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.')
         return self._products
+
+categ = Category(
+        name='Смартфоны',
+        description='Смартфоны, как средство не только коммуникации, '
+                    'но и получения дополнительных функций для удобства жизни',
+        products=[
+            Product('Iphone 15', '512GB, Gray space', 210000.0, 8),
+            Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
+        ]
+    )
+
+categ.add_product(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
+categ.products
