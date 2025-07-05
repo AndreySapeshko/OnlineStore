@@ -23,7 +23,10 @@ def test_check_product_matching(product: Product, category: Category) -> None:
 
 def test_new_product(category: Category) -> None:
     number_of_pieces = sum([x.quantity for x in category.products])
-    Product.new_product({'name': 'Xiaomi Redmi Note 11', 'description': '1024GB, Синий', 'price': 31000.0, 'quantity': 14}, category.products)
+    Product.new_product(
+        {'name': 'Xiaomi Redmi Note 11', 'description': '1024GB, Синий', 'price': 31000.0, 'quantity': 14},
+        category.products
+    )
     assert sum([x.quantity for x in category.products]) == number_of_pieces + 14
 
 
