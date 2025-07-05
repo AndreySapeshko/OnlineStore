@@ -1,6 +1,6 @@
 from src.category import Category
 
-class IteratorCategories:
+class IteratorCategory:
     category: Category
     index_category: int = 0
 
