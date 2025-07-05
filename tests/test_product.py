@@ -44,3 +44,12 @@ def test_set_price(product: Product, capsys) -> None:
         assert product.price == 190000.0
         product.price = 110000.0
         assert product.price == 110000.0
+
+
+def test_str_product(product: Product) -> None:
+    assert str(product) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+
+
+def test_add_product(product: Product) -> None:
+    product_for_add = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    assert product + product_for_add == 2580000.0
