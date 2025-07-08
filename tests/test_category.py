@@ -23,3 +23,7 @@ def test_category_products(category: Category, capsys: CaptureFixture[str]) -> N
     captured = capsys.readouterr()
     assert captured.out == ('Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'
                             'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n')
+
+
+def test_str_category(category: Category) -> None:
+    assert str(category) == 'Смартфоны, количество продуктов: 22 шт.'

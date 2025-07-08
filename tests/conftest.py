@@ -5,6 +5,7 @@ import pytest
 from src.category import Category
 from src.product import Product
 from tests.config import PATH_PRODUCTS
+from src.iterator_category import IteratorCategory
 
 
 @pytest.fixture
@@ -36,3 +37,18 @@ def categories_json_file() -> tuple:
     with open(file_name, 'r', encoding='utf-8') as file:
         categories = json.load(file)
     return categories, file_name
+
+
+@pytest.fixture
+def iterator_category() -> IteratorCategory:
+    return IteratorCategory(
+        Category(
+            name='Смартфоны',
+            description='Смартфоны, как средство не только коммуникации, '
+                        'но и получения дополнительных функций для удобства жизни',
+            products=[
+                Product('Iphone 15', '512GB, Gray space', 210000.0, 8),
+                Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
+            ]
+        )
+    )
