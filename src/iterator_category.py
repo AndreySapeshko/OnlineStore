@@ -1,6 +1,7 @@
+from __future__ import annotations
 from typing import Any
 from src.category import Category
-from __future__ import annotations
+
 
 class IteratorCategory:
     category: Category
