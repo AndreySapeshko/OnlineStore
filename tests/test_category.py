@@ -1,3 +1,4 @@
+import pytest
 from pytest import CaptureFixture
 
 from src.category import Category
@@ -16,6 +17,9 @@ def test_category(category: Category) -> None:
 def test_category_add_product(category: Category) -> None:
     category.add_product(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
     assert len(category.products) == 3
+    with pytest.raises(TypeError) as exc_info:
+        category.add_product('not product')
+        assert str(exc_info.value) == 'Добавлять можно только объекты класса Product и его наследники'
 
 
 def test_category_products(category: Category, capsys: CaptureFixture[str]) -> None:
