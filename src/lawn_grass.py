@@ -2,6 +2,9 @@ from src.product import Product
 
 
 class LawnGrass(Product):
+    """ Описывает продукт "газонная трава" помимо полей наследуемых от Product
+     добавлены страна происхождения, период роста и цвет """
+
     country: str
     germination_period: str
     color: str

@@ -3,6 +3,9 @@ from typing import Any
 
 
 class Product:
+    """ Класс описыает общеие свойства для любого продукта
+    имеет поля: имя, описание, цена и количество """
+
     name: str
     description: str
     __price: float

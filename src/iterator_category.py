@@ -4,6 +4,8 @@ from src.category import Category
 
 
 class IteratorCategory:
+    """ Класс создает возможность итерации по списку продуктов категории """
+
     category: Category
     index_category: int = 0
 

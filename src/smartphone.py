@@ -2,6 +2,9 @@ from src.product import Product
 
 
 class Smartphone(Product):
+    """ Класс описывает продукт смартфон помимо наследуемых полей добавлены
+     эффективность, модель, память и цвет """
+
     efficiency: float
     model: str
     memory: int
