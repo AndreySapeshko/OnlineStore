@@ -20,3 +20,7 @@ class Order(Receiver):
 
     def add_product(self, product: Product) -> None:
         self.__products.append(product)
+
+    def get_products(self) -> list:
+        result = self.__products
+        return result
