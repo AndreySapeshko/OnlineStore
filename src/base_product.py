@@ -3,6 +3,7 @@ from typing import Any
 
 
 class BaseProduct(ABC):
+    """ Абстрактный класс задающий обязательную функциональность для всех продуктов """
 
     @abstractmethod
     def __str__(self) -> str:
