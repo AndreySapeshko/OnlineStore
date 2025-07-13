@@ -22,7 +22,7 @@ pip install -r requirements.txt
 6. модуль test_lawn_grass
 7. модуль test_smartphone
 8. модуль test_report_by_create_object
-9. модуль 
+9. модуль test_base_product
 
 ## Использование:
 
