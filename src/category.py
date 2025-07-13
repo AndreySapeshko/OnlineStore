@@ -2,6 +2,10 @@ from src.product import Product
 
 
 class Category:
+    """ Класс описыавет категорию каких то продуктов, у нее есть имя,
+    опесание и список входящих в категорию продуктов. В классе есть две переменные,
+    одна отражает сколько всего категорий созданно, вторая сколко продуктов в этих категориях """
+
     name: str
     description: str
     __products: list[Product]
@@ -22,8 +26,11 @@ class Category:
         return f'{self.name}, количество продуктов: {count_products} шт.'
 
     def add_product(self, product: Product) -> None:
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError('Добавлять можно только объекты класса Product и его наследники')
 
     @property
     def products(self) -> list[Product]:

@@ -1,9 +1,10 @@
 import pytest
 
 from unittest.mock import patch
-
 from src.product import Product
 from src.category import Category
+from src.smartphone import Smartphone
+from src.lawn_grass import LawnGrass
 
 
 def test_product(product: Product) -> None:
@@ -53,6 +54,12 @@ def test_str_product(product: Product) -> None:
     assert str(product) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
 
 
-def test_add_product(product: Product) -> None:
+def test_add_product(product: Product, smartphone: Smartphone, lawn_grass: LawnGrass) -> None:
     product_for_add = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    smartphone_for_add = Smartphone('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0,
+                                    14, 90.3, 'Note 11', 1024, 'Синий')
     assert product + product_for_add == 2580000.0
+    assert smartphone + smartphone_for_add == 1334000.0
+    with pytest.raises(TypeError) as exc_info:
+        smartphone + lawn_grass
+        assert str(exc_info.value) == 'Товары разных типов складывать нельзя'

@@ -6,6 +6,8 @@ from src.product import Product
 
 
 def read_from_json(file_name: str) -> list[dict]:
+    """ Функция читает из файла в формате json данные и возвращает в виде списка словарей """
+
     data = []
     if os.path.exists(file_name):
         with open(file_name, 'r', encoding='utf-8') as file:
@@ -14,6 +16,10 @@ def read_from_json(file_name: str) -> list[dict]:
 
 
 def created_category_with_products(file_name: str) -> list[Category]:
+    """ Функция принимает имя json файла в котором указаны категории и соответствующие
+    им списки продуктов. На основе этих данных создает объекты категорий с списками продуктов
+     и возвращает их в списке. """
+
     data = read_from_json(file_name)
     categories = []
     if len(data) != 0:
