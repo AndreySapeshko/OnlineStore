@@ -1,6 +1,7 @@
-from src.base_product import BaseProduct
-
 import pytest
+
+from src.base_product import BaseProduct
+from src.product import Product
 
 
 class Product1(BaseProduct):
@@ -8,13 +9,13 @@ class Product1(BaseProduct):
     def __str__(self) -> str:
         return self.__class__.__name__
 
-    def __add__(self, other):
+    def __add__(self, other: Product) -> str:
         return self.__class__.__name__ + ' + ' + other.__class__.__name__
 
 
 class Product2(BaseProduct):
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.__class__.__name__
 
 

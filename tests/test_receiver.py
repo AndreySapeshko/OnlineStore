@@ -1,13 +1,13 @@
-from src.receiver import Receiver
-from src.product import Product
-
 import pytest
+
+from src.product import Product
+from src.receiver import Receiver
 
 
 class Basket(Receiver):
     products: list[Product]
 
-    def __init__(self, products=None):
+    def __init__(self, products: list[Product]=None) -> None:
         if products:
             self.products = products
         else:
@@ -19,7 +19,7 @@ class Basket(Receiver):
 
 class Warehouse(Receiver):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = 'Warehouse'
 
 

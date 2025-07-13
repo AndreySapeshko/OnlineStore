@@ -5,7 +5,7 @@ from src.report_by_create_object import ReportByCreateObject
 
 class TestClass(ReportByCreateObject):
 
-    def __init__(self, arg1, arg2, arg3) -> None:
+    def __init__(self, arg1: str, arg2: str, arg3: str) -> None:
         self.arg1 = arg1
         self.arg2 = arg2
         self.arg3 = arg3

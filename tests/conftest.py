@@ -3,12 +3,12 @@ import json
 import pytest
 
 from src.category import Category
+from src.iterator_category import IteratorCategory
+from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
 from tests.config import PATH_PRODUCTS
-from src.iterator_category import IteratorCategory
-from src.order import Order
 
 
 @pytest.fixture

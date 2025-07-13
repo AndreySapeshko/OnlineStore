@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from typing import Any
+
 from src.base_product import BaseProduct
 
 
