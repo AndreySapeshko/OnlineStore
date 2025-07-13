@@ -1,8 +1,9 @@
 from __future__ import annotations
 from typing import Any
+from src.base_product import BaseProduct
 
 
-class Product:
+class Product(BaseProduct):
     """ Класс описыает общеие свойства для любого продукта
     имеет поля: имя, описание, цена и количество """
 
