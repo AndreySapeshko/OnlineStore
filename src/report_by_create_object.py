@@ -11,6 +11,6 @@ class ReportByCreateObject:
             if len(args) == 0:
                 args = arg
             else:
-                args += ', ' + arg
+                args += ', ' + str(arg)
         message = f'{self.__class__.__name__}({args})'
         return message
