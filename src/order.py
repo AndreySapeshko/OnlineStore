@@ -14,7 +14,7 @@ class Order(Receiver):
     date_order: datetime.datetime
     __products: list[Product]
 
-    def __init__(self, user_name: str, products: list=None) -> None:
+    def __init__(self, user_name: str, products: list = None) -> None:
         self.user_name = user_name
         self.__products = products if products else []
         self.date_order = datetime.datetime.now()

@@ -7,7 +7,7 @@ from src.receiver import Receiver
 class Basket(Receiver):
     products: list[Product]
 
-    def __init__(self, products: list[Product]=None) -> None:
+    def __init__(self, products: list[Product] = None) -> None:
         if products:
             self.products = products
         else:

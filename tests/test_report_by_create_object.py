@@ -3,8 +3,8 @@ from typing import Any
 import pytest
 from pytest import CaptureFixture
 
-from src.report_by_create_object import ReportByCreateObject
 from src.product import Product
+from src.report_by_create_object import ReportByCreateObject
 
 
 class TestClass(ReportByCreateObject):
@@ -14,6 +14,7 @@ class TestClass(ReportByCreateObject):
         self.arg2 = arg2
         self.arg3 = arg3
         super().__init__()
+
 
 @pytest.mark.parametrize('arg1, arg2, arg3, expected', [
     ('One', 'Two', 'Three', 'TestClass(One, Two, Three)\n'),
