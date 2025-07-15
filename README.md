@@ -41,7 +41,8 @@ pip install -r requirements.txt
  Класс Product
 
 Класс описыает общеие свойства для любого продукта 
-имеет поля: имя, описание, цена и количество
+имеет поля: имя, описание, цена и количество. Наследуется 
+от классов BaseProduct и ReportByCreateObject
 ### Модуль utils:
  Функция read_from_json
 
