@@ -65,3 +65,8 @@ def test_add_product(product: Product, smartphone: Smartphone, lawn_grass: LawnG
     with pytest.raises(TypeError) as exc_info:
         smartphone + lawn_grass
         assert str(exc_info.value) == 'Товары разных типов складывать нельзя'
+
+
+def test_product_except() -> None:
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
+        Product("Iphone 15", "512GB, Gray space", 210000.0, 0)

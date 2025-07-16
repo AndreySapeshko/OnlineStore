@@ -2,6 +2,7 @@ import datetime
 
 from src.product import Product
 from src.receiver import Receiver
+from src.error_adding_product import ErrorAddingProduct
 
 
 class Order(Receiver):
@@ -22,7 +23,21 @@ class Order(Receiver):
         self.id_order = Order.count_order
 
     def add_product(self, product: Product) -> None:
-        self.__products.append(product)
+        try:
+            if isinstance(product, Product):
+                if product.quantity == 0:
+                    raise ErrorAddingProduct('Нельзя добавлять продукты с нулевым количеством.')
+                self.__products.append(product)
+            else:
+                raise TypeError('Добавлять можно только объекты класса Product и его наследники')
+        except ErrorAddingProduct as e:
+            print(e)
+        except TypeError as e:
+            print(e)
+        else:
+            print('Продукт успешно добавлен.')
+        finally:
+            print('Обработка добавления продукта завершена.')
 
     def get_products(self) -> list:
         result = self.__products

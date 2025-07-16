@@ -1,5 +1,6 @@
 from src.product import Product
 from src.receiver import Receiver
+from src.error_adding_product import ErrorAddingProduct
 
 
 class Category(Receiver):
@@ -27,14 +28,32 @@ class Category(Receiver):
         return f'{self.name}, количество продуктов: {count_products} шт.'
 
     def add_product(self, product: Product) -> None:
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+        try:
+            if isinstance(product, Product):
+                if product.quantity == 0:
+                    raise ErrorAddingProduct('Нельзя добавлять продукты с нулевым количеством.')
+                self.__products.append(product)
+                Category.product_count += 1
+            else:
+                raise TypeError('Добавлять можно только объекты класса Product и его наследники')
+        except ErrorAddingProduct as e:
+            print(e)
+        except TypeError as e:
+            print(e)
         else:
-            raise TypeError('Добавлять можно только объекты класса Product и его наследники')
+            print('Продукт успешно добавлен.')
+        finally:
+            print('Обработка добавления продукта завершена.')
 
     @property
     def products(self) -> list[Product]:
         for product in self.__products:
             print(str(product))
         return self.__products
+
+    def avg_price_product(self) -> float:
+        try:
+            avg_price = sum([x.price for x in self.__products]) / sum([x.quantity for x in self.__products])
+        except ZeroDivisionError:
+            return 0.0
+        return round(avg_price, 2)
