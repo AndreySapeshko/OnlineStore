@@ -1,5 +1,5 @@
-from src.iterator_category import IteratorCategory
 from src.category import Category
+from src.iterator_category import IteratorCategory
 
 
 def test_iterator_categories(category: Category) -> None:

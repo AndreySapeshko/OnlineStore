@@ -1,10 +1,12 @@
-import pytest
-
 from unittest.mock import patch
-from src.product import Product
+
+import pytest
+from pytest import CaptureFixture
+
 from src.category import Category
-from src.smartphone import Smartphone
 from src.lawn_grass import LawnGrass
+from src.product import Product
+from src.smartphone import Smartphone
 
 
 def test_product(product: Product) -> None:
@@ -37,7 +39,7 @@ def test_new_product_except() -> None:
         assert str(exc_info.value) == 'Количество или тип параметров не соответстует ожиданию'
 
 
-def test_set_price(product: Product, capsys) -> None:
+def test_set_price(product: Product, capsys: CaptureFixture[str]) -> None:
     product.price = 190000.0
     assert product.price == 190000.0
     product.price = 0

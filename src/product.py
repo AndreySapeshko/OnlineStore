@@ -1,8 +1,12 @@
 from __future__ import annotations
+
 from typing import Any
 
+from src.base_product import BaseProduct
+from src.report_by_create_object import ReportByCreateObject
 
-class Product:
+
+class Product(BaseProduct, ReportByCreateObject):
     """ Класс описыает общеие свойства для любого продукта
     имеет поля: имя, описание, цена и количество """
 
@@ -16,6 +20,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'

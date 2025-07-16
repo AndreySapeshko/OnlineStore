@@ -3,11 +3,12 @@ import json
 import pytest
 
 from src.category import Category
+from src.iterator_category import IteratorCategory
+from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
 from tests.config import PATH_PRODUCTS
-from src.iterator_category import IteratorCategory
 
 
 @pytest.fixture
@@ -73,3 +74,8 @@ def lawn_grass() -> LawnGrass:
         500.0, 20, 'Россия',
         '7 дней', 'Зеленый'
     )
+
+
+@pytest.fixture
+def order():
+    return Order('Sergey')
