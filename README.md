@@ -23,8 +23,9 @@ pip install -r requirements.txt
 7. модуль test_smartphone
 8. модуль test_report_by_create_object
 9. модуль test_base_product
-10. модуль test_reseiver
+10. модуль test_receiver
 11. модуль test_order
+12. модуль test_error_adding_product
 
 ## Использование:
 
@@ -89,6 +90,10 @@ pip install -r requirements.txt
 
 Класс описывает заказ клиента у объекта есть поля 
 id_заказа, имя пользователя, дата. У класса ест поле счетчик заказов
+
+### Модуль error_adding_product:
+
+Класс исключение применяемый при добавлении продуктов в заказы и категории
 
 ### Логирование
 
