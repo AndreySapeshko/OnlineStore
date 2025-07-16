@@ -1,4 +1,3 @@
-import pytest
 from pytest import CaptureFixture
 
 from src.category import Category

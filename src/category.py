@@ -45,13 +45,11 @@ class Category(Receiver):
         finally:
             print('Обработка добавления продукта завершена.')
 
-
     @property
     def products(self) -> list[Product]:
         for product in self.__products:
             print(str(product))
         return self.__products
-
 
     def avg_price_product(self) -> float:
         try:
