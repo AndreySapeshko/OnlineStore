@@ -14,12 +14,16 @@ def test_category(category: Category) -> None:
     assert category.product_count == 2
 
 
-def test_category_add_product(category: Category) -> None:
+def test_category_add_product(category: Category, capsys: CaptureFixture[str]) -> None:
+    product = Product('Product', 'without quantity', 1.0, 1)
+    product.quantity = 0
+    category.add_product(product)
+    captured = capsys.readouterr()
+    assert captured.out == ('Product(Product, without quantity, 1.0, 1)\n'
+                            'Нельзя добавлять продукты с нулевым количеством.\n'
+                            'Обработка добавления продукта завершена.\n')
     category.add_product(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
     assert len(category.products) == 3
-    with pytest.raises(TypeError) as exc_info:
-        category.add_product('not product')
-        assert str(exc_info.value) == 'Добавлять можно только объекты класса Product и его наследники'
 
 
 def test_category_products(category: Category, capsys: CaptureFixture[str]) -> None:
