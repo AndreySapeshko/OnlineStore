@@ -38,3 +38,11 @@ class Category(Receiver):
         for product in self.__products:
             print(str(product))
         return self.__products
+
+
+    def avg_price_product(self) -> float:
+        try:
+            avg_price = sum([x.price for x in self.__products]) / sum([x.quantity for x in self.__products])
+        except ZeroDivisionError:
+            return 0.0
+        return round(avg_price, 2)

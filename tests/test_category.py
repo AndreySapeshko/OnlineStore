@@ -31,3 +31,13 @@ def test_category_products(category: Category, capsys: CaptureFixture[str]) -> N
 
 def test_str_category(category: Category) -> None:
     assert str(category) == 'Смартфоны, количество продуктов: 22 шт.'
+
+
+def test_avg_price_product(category: Category) -> None:
+    category_0 = Category(
+        name='Смартфоны',
+        description='Смартфоны, как средство не только коммуникации, '
+                    'но и получения дополнительных функций для удобства жизни'
+    )
+    assert category.avg_price_product() == 10954.55
+    assert category_0.avg_price_product() == 0.0
